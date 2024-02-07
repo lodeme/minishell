@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   t_simple_cmds_utils.c                              :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/02/17 15:31:53 by mgraaf        #+#    #+#                 */
-/*   Updated: 2022/10/03 17:56:15 by maiadegraaf   ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   t_simple_cmds_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: louis.demetz <louis.demetz@student.42.f    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/17 15:31:53 by mgraaf            #+#    #+#             */
+/*   Updated: 2024/02/07 17:29:46 by louis.demet      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,9 @@ void	ft_simple_cmdsclear(t_simple_cmds **lst)
 
 t_simple_cmds	*ft_simple_cmdsfirst(t_simple_cmds *map)
 {
-	int	i;
-
-	i = 0;
 	if (!map)
 		return (NULL);
 	while (map->prev != NULL)
-	{
 		map = map->prev;
-		i++;
-	}
 	return (map);
 }
