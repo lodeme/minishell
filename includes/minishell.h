@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   minishell.h                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: mgraaf <mgraaf@student.codam.nl>             +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/02/14 13:46:41 by mgraaf        #+#    #+#                 */
-/*   Updated: 2022/10/03 17:56:15 by maiadegraaf   ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lodemetz <lodemetz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/14 13:46:41 by mgraaf            #+#    #+#             */
+/*   Updated: 2024/02/07 13:06:40 by lodemetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include "color.h"
 # include "builtins.h"
 # include "executor.h"
+# include <signal.h>
+# include <sys/wait.h>
 
 int		parse_envp(t_tools *tools);
 int		find_pwd(t_tools *tools);
@@ -59,6 +61,6 @@ typedef struct s_global
 	int	in_heredoc;
 }	t_global;
 
-t_global	g_global;
+extern t_global	g_global;
 
 #endif

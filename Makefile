@@ -54,7 +54,7 @@ src	=	src/main.c \
 
 OBJS	=	$(addprefix $(PATHO), $(notdir $(patsubst %.c, %.o, $(src))))
 
-FLAGS	=	-Wall -Werror -Wextra -g #-fsanitize=address
+FLAGS	=	-Wall -Werror -Wextra -g -fPIE #-fsanitize=address
 
 LIBFT	=	./libraries/libft/libft.a
 
@@ -67,11 +67,11 @@ HEADER	=	.includes/builtins.h \
 			.includes/parser.h \
 			.includes/utils.h 
 
-READLINE_DIR = $(shell brew --prefix readline)
+# READLINE_DIR = $(shell brew --prefix readline)
 
-READLINE_LIB = -lreadline -lhistory -L $(READLINE_DIR)/lib
+# READLINE_LIB = -lreadline -lhistory -L $(READLINE_DIR)/lib
 	
-INCLUDES =-Iincludes -I$(PATHP) -I$(LIBFTP) -I$(READLINE_DIR)/include 
+INCLUDES =-Iincludes -I$(PATHP) -I$(LIBFTP) #-I$(READLINE_DIR)/include 
 
 all: $(BUILD_PATHS) $(NAME)
 
@@ -108,7 +108,7 @@ $(PATHO)%.o:: $(PATHEX)%.c $(HEADERS)
 	@$(CC) -c $(FLAGS) $(INCLUDES) $< -o $@
 
 $(NAME): $(LIBFT) $(OBJS) $(HEADERS)
-	@$(CC) $(FLAGS) $(LIBFT) $(OBJS) $(READLINE_LIB) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJS) -L./libraries/libft -lft -lreadline -o $(NAME)
 
 	@echo "Success"
 
